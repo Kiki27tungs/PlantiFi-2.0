@@ -1,0 +1,8 @@
+{
+  "name": "PlantiFi - AI-Powered Assistant for Farmers",
+  "description": "AI-powered plant disease detection, crop calendar, and agricultural insights.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
