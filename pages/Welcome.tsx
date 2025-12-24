@@ -144,14 +144,22 @@ const Welcome: React.FC<WelcomeProps> = ({ texts }) => {
       {/* Footer / Stats Ticker */}
       <div className="relative z-10 bg-black/40 backdrop-blur-md border-t border-white/10 py-4">
         <div className="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-sm text-emerald-100/60">
-           <div className="flex items-center gap-6 mb-2 md:mb-0 overflow-hidden w-full md:w-auto">
+           {/* 'Developed by' moved to the left side */}
+           <div className="hidden md:block">
+             {texts.developed_by}
+           </div>
+
+           {/* Stats Ticker moved to the right side */}
+           <div className="flex items-center gap-6 mt-2 md:mt-0 overflow-hidden w-full md:w-auto">
              <div className="flex gap-8 animate-marquee whitespace-nowrap">
                <span className="flex items-center gap-2"><i className="fa-solid fa-users text-emerald-500"></i> 12k+ Farmers Active</span>
                <span className="flex items-center gap-2"><i className="fa-solid fa-leaf text-emerald-500"></i> 45k+ Plants Healed</span>
                <span className="flex items-center gap-2"><i className="fa-solid fa-earth-americas text-emerald-500"></i> 6 Languages Supported</span>
              </div>
            </div>
-           <div className="hidden md:block">
+
+           {/* Mobile view 'Developed by' adjustment */}
+           <div className="md:hidden mt-2 border-t border-white/5 pt-2 w-full text-center text-xs">
              {texts.developed_by}
            </div>
         </div>
