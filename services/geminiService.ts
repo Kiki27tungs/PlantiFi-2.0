@@ -1,17 +1,14 @@
 import { GoogleGenAI, Type } from "@google/genai";
 import { DiseaseAnalysisResult } from "../types";
 
-// In Vercel, the environment variable is accessed via process.env.API_KEY
-// during build or if provided by the environment.
-const apiKey = process.env.API_KEY || ''; 
-
 export const analyzePlantImage = async (base64Image: string, language: string, symptoms?: string): Promise<DiseaseAnalysisResult> => {
-  if (!apiKey) {
+  // Ensure the API key exists
+  if (!process.env.API_KEY) {
     throw new Error("API Key is missing. Please set your API_KEY in the Vercel environment variables.");
   }
 
-  // Always create a fresh instance for Vercel deployment consistency
-  const ai = new GoogleGenAI({ apiKey });
+  // Initialize the Gemini API client
+  const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
 
   // Remove data URL prefix if present
   const cleanBase64 = base64Image.replace(/^data:image\/(png|jpg|jpeg);base64,/, "");
